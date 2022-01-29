@@ -11,12 +11,10 @@ class AppRouter {
   static FluroRouter router = FluroRouter();
   static void setupRouter() {
     //Define app routes and pair it with a handler
-    /*
     router.define('', handler: AppRouterHandler.splashHandler);
-    router.define('view_1', handler: AppRouterHandler.view_1Handler);
-    router.define('view_2', handler: AppRouterHandler.view_2Handler);
-    router.define('view_3', handler: AppRouterHandler.view_3Handler);
-    router.define('view_4', handler: AppRouterHandler.view_4Handler);
-    */
+    router.define('onboarding1', handler: AppRouterHandler.onboarding1Handler);
+    router.define('onboarding2', handler: AppRouterHandler.onboarding2Handler);
+    router.define('onboarding3', handler: AppRouterHandler.onboarding3Handler);
+    router.define('onboarding4', handler: AppRouterHandler.onboarding4Handler);
   }
 }

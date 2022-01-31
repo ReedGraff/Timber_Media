@@ -10,7 +10,7 @@ import 'package:timber_app/Configs/constants/constants.dart';
 
 class onboarding1 extends StatelessWidget { 
   const onboarding1({Key? key}) : super(key: key);
-  
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -25,7 +25,7 @@ class onboarding1 extends StatelessWidget {
                 ),
                 const SizedBox(height: 25),
                 const Text(
-                  "Welcome",
+                  "Welcome 1",
                   style: TextStyle(
                       fontFamily: "ABeeZee", fontSize: 40, color: darkRed),
                 ),
@@ -54,7 +54,7 @@ class onboarding1 extends StatelessWidget {
               alignment: Alignment.bottomCenter,
               child: ElevatedButton(
                 onPressed: () {
-                  print("hi");
+                  Navigator.pushNamed(context, "onboarding2");
                 },
                 child: Row(
                   children: const [

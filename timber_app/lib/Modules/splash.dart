@@ -27,12 +27,13 @@ class _splashState extends State<splash> {
 
   logs() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.clear();
 
     if (prefs.containsKey("timesLogged")) {
       var timesLogged = prefs.getInt("timesLogged");
       prefs.setInt("timesLogged", timesLogged! + 1);
       Future.delayed(const Duration(seconds: 3),
-          () => Navigator.pushNamed(context, "onboarding2"));
+          () => Navigator.pushNamed(context, "chat"));
     } else {
       prefs.setInt("timesLogged", 1);
       Future.delayed(const Duration(seconds: 3),

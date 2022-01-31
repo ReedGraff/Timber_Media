@@ -16,5 +16,11 @@ class AppRouter {
     router.define('onboarding2', handler: AppRouterHandler.onboarding2Handler);
     router.define('onboarding3', handler: AppRouterHandler.onboarding3Handler);
     router.define('onboarding4', handler: AppRouterHandler.onboarding4Handler);
+    router.define('onboarding5', handler: AppRouterHandler.onboarding5Handler);
+    router.define('onboarding6', handler: AppRouterHandler.onboarding6Handler);
+
+    router.define('base', handler: AppRouterHandler.baseHandler);
+    router.define('chat', handler: AppRouterHandler.chatHandler);
+    router.define('help', handler: AppRouterHandler.helpHandler);
   }
 }

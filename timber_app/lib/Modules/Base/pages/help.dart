@@ -1,13 +1,6 @@
-// This Screen is for the onboarding process interface
+// This Screen is for the help screen interface
+
 // Flutter
-
-// External
-
-// Local
-
-// This Screen is for the onboarding process interface
-// Flutter
-
 import 'package:flutter/material.dart';
 
 // External
@@ -15,8 +8,8 @@ import 'package:flutter/material.dart';
 // Local
 import 'package:timber_app/Configs/constants/constants.dart';
 
-class onboarding2 extends StatelessWidget {
-  const onboarding2({Key? key}) : super(key: key);
+class help extends StatelessWidget {
+  const help({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +25,7 @@ class onboarding2 extends StatelessWidget {
                   ),
                   const SizedBox(height: 25),
                   const Text(
-                    "Welcome 2",
+                    "Help",
                     style: TextStyle(
                         fontFamily: "ABeeZee", fontSize: 40, color: darkRed),
                   ),
@@ -60,7 +53,7 @@ class onboarding2 extends StatelessWidget {
                 alignment: Alignment.bottomCenter,
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, "onboarding3");
+                    Navigator.pushNamed(context, "chat");
                   },
                   child: Row(
                     children: const [

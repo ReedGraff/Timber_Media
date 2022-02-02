@@ -17,8 +17,6 @@ import 'package:timber_app/Modules/onboarding/onboarding5.dart';
 import 'package:timber_app/Modules/onboarding/onboarding6.dart';
 
 import 'package:timber_app/Modules/Base/base.dart';
-import 'package:timber_app/Modules/Base/pages/chat.dart';
-import 'package:timber_app/Modules/Base/pages/help.dart';
 
 //try using material… I’m not sure if it will work
 
@@ -49,10 +47,4 @@ class AppRouterHandler {
   static Handler baseHandler = Handler(
       handlerFunc: (BuildContext? context, Map<String, List<String>> params) =>
           base());
-  static Handler chatHandler = Handler(
-      handlerFunc: (BuildContext? context, Map<String, List<String>> params) =>
-          chat());
-  static Handler helpHandler = Handler(
-      handlerFunc: (BuildContext? context, Map<String, List<String>> params) =>
-          help());
 }

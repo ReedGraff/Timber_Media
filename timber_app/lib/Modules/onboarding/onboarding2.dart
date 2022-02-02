@@ -14,9 +14,16 @@ import 'package:flutter/material.dart';
 
 // Local
 import 'package:timber_app/Configs/constants/constants.dart';
+import 'package:timber_app/Modules/onboarding/onboarding3.dart';
 
 class onboarding2 extends StatelessWidget {
   const onboarding2({Key? key}) : super(key: key);
+
+  /*
+  var screenSize = MediaQuery.of(context).size;
+  var width = screenSize.width;
+  var height = screenSize.height;
+  */
 
   @override
   Widget build(BuildContext context) {
@@ -26,29 +33,57 @@ class onboarding2 extends StatelessWidget {
           body: SingleChildScrollView(
               child: Column(
                 children: [
-                  Image.asset(
-                    'assets/images/image (1).png',
-                    height: 500,
-                  ),
-                  const SizedBox(height: 25),
-                  const Text(
-                    "Welcome 2",
-                    style: TextStyle(
-                        fontFamily: "ABeeZee", fontSize: 40, color: darkRed),
-                  ),
-                  const SizedBox(height: 25),
-                  const Text(
-                    "Timber is dedicated to making the most digestible mobile school application. ",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontFamily: "ABeeZee",
-                      fontSize: 25,
-                      color: textColor,
+
+
+
+                  Container(
+                    width: MediaQuery.of(context).size.width,
+                    height: 400,
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage("assets/images/boys.png"),
+                        fit: BoxFit.cover,
+                      ),
+                      borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(30),
+                        bottomRight: Radius.circular(30)
+                      )
                     ),
                   ),
+
+                  Padding(
+                    child: Column(
+                      children: const [
+                        SizedBox(height: 25),
+                        Text(
+                          "What Do We Currently Offer?",
+                          style: TextStyle(
+                            fontFamily: "ABeeZee", 
+                            fontSize: 40, 
+                            color: darkRed,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                        SizedBox(height: 25),
+                        Text(
+                          "Now... That is a great question... And reluctantly we must admit... It really isn't that much at all, as we have just started development very recently.",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontFamily: "ABeeZee",
+                            fontSize: 25,
+                            color: textColor,
+                          ),
+                        ),
+                      ],
+                    ),
+                    padding: const EdgeInsets.all(20)
+                  ),
+
+
+
                 ],
               ),
-              padding: const EdgeInsets.all(20)),
+            ),
           backgroundColor: backgroundColor,
         ),
         Positioned(
@@ -60,7 +95,10 @@ class onboarding2 extends StatelessWidget {
                 alignment: Alignment.bottomCenter,
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, "onboarding3");
+                    Navigator.pushNamed(
+                      context,
+                      "onboarding3"
+                    );
                   },
                   child: Row(
                     children: const [

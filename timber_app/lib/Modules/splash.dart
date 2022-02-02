@@ -33,7 +33,7 @@ class _splashState extends State<splash> {
       var timesLogged = prefs.getInt("timesLogged");
       prefs.setInt("timesLogged", timesLogged! + 1);
       Future.delayed(const Duration(seconds: 3),
-          () => Navigator.pushNamed(context, "chat"));
+          () => Navigator.pushNamed(context, "base"));
     } else {
       prefs.setInt("timesLogged", 1);
       Future.delayed(const Duration(seconds: 3),

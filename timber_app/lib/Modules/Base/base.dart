@@ -1,3 +1,4 @@
+
 // This Screen is for the base interface
 
 // Flutter
@@ -7,6 +8,8 @@ import 'package:flutter/material.dart';
 
 // Local
 import 'package:timber_app/Configs/constants/constants.dart';
+import 'package:timber_app/Modules/Base/pages/chat.dart';
+import 'package:timber_app/Modules/Base/pages/help.dart';
 
 class base extends StatefulWidget {
   const base({Key? key}) : super(key: key);
@@ -17,42 +20,36 @@ class base extends StatefulWidget {
 
 class _baseState extends State<base> {
   int _selectedIndex = 0;
+  var appBarHandler = const ["Timber > Chat", "Timber > Help"];
+  var contentHandler = const [chat(), help()];
 
-  var page_routes = ["chat", "help"];
+  String appBar = "Timber > Chat";
+  Widget content = const chat();
+
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
+      appBar = appBarHandler[index];
+      content = contentHandler[index];
     });
-
-    Navigator.pushNamed(context, page_routes[index]);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       appBar: AppBar(
-        title: const Text(
-          "Timber Chat App",
-          style: TextStyle(color: darkRed),
+        title: Text(
+          appBar,
+          style: const TextStyle(color: darkRed),
         ),
         centerTitle: true,
         automaticallyImplyLeading: false,
         elevation: 0,
         backgroundColor: backgroundColor,
       ),
+      body: content,
       backgroundColor: backgroundColor,
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Container(
-                alignment: Alignment.bottomCenter, // align the row
-                padding: const EdgeInsets.all(16.0),
-                child: Row(
-                  children: const <Widget>[Flexible(child: TextField())],
-                ))
-          ],
-        ),
-      ),
       bottomNavigationBar: BottomNavigationBar(
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.chat), label: "Chat"),

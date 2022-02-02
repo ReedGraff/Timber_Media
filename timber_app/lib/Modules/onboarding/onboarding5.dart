@@ -14,6 +14,7 @@ import 'package:flutter/material.dart';
 
 // Local
 import 'package:timber_app/Configs/constants/constants.dart';
+import 'package:timber_app/Modules/onboarding/onboarding6.dart';
 
 class onboarding5 extends StatelessWidget {
   const onboarding5({Key? key}) : super(key: key);
@@ -60,7 +61,10 @@ class onboarding5 extends StatelessWidget {
                 alignment: Alignment.bottomCenter,
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, "onboarding6");
+                    Navigator.pushNamed(
+                      context,
+                      "onboarding6"
+                    );
                   },
                   child: Row(
                     children: const [

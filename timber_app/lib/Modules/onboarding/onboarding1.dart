@@ -1,12 +1,12 @@
 // This Screen is for the onboarding process interface
 // Flutter
-
 import 'package:flutter/material.dart';
 
 // External
 
 // Local
 import 'package:timber_app/Configs/constants/constants.dart';
+import 'package:timber_app/Modules/onboarding/onboarding2.dart';
 
 class onboarding1 extends StatelessWidget { 
   const onboarding1({Key? key}) : super(key: key);
@@ -54,7 +54,10 @@ class onboarding1 extends StatelessWidget {
               alignment: Alignment.bottomCenter,
               child: ElevatedButton(
                 onPressed: () {
-                  Navigator.pushNamed(context, "onboarding2");
+                  Navigator.pushNamed(
+                    context,
+                    "onboarding2"
+                  );
                 },
                 child: Row(
                   children: const [

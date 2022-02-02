@@ -1,13 +1,6 @@
 // This Screen is for the onboarding process interface
 // Flutter
 
-// External
-
-// Local
-
-// This Screen is for the onboarding process interface
-// Flutter
-
 import 'package:flutter/material.dart';
 
 // External
@@ -18,6 +11,12 @@ import 'package:timber_app/Configs/constants/constants.dart';
 class onboarding6 extends StatelessWidget {
   const onboarding6({Key? key}) : super(key: key);
 
+  /*
+  var screenSize = MediaQuery.of(context).size;
+  var width = screenSize.width;
+  var height = screenSize.height;
+  */
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -26,29 +25,81 @@ class onboarding6 extends StatelessWidget {
           body: SingleChildScrollView(
               child: Column(
                 children: [
-                  Image.asset(
-                    'assets/images/image (1).png',
-                    height: 500,
+
+                  Stack(
+                    children: [
+                      Container(
+                        width: MediaQuery.of(context).size.width,
+                        height: 400,
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: const AssetImage("assets/images/image (2).jpg"),
+                            fit: BoxFit.cover,
+                            colorFilter: ColorFilter.mode(
+                              Colors.black.withOpacity(0.2), 
+                              BlendMode.dstATop
+                            ),
+                          ),
+                          borderRadius: const BorderRadius.only(
+                            bottomLeft: Radius.circular(30),
+                            bottomRight: Radius.circular(30)
+                          )
+                        ),
+                      ),
+                      Padding(
+                        child: Center(
+                          child: Column(
+                            children: const [
+                              SizedBox(height: 150),
+                              Text(
+                                "Reccomendations",
+                                style: TextStyle(
+                                  fontFamily: "ABeeZee", 
+                                  fontSize: 40, 
+                                  color: textColor,
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+                              SizedBox(height: 25),
+                              Text(
+                                "If there is ever a point in which you discover a bug or issue please feel free to reach out to us!",
+                                style: TextStyle(
+                                  fontFamily: "ABeeZee", 
+                                  fontSize: 25, 
+                                  color: textColor,
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+                            ],
+                          ),
+                        ),
+                        padding: const EdgeInsets.all(20),
+                      )
+
+                    ]
                   ),
-                  const SizedBox(height: 25),
-                  const Text(
-                    "Welcome 6",
-                    style: TextStyle(
-                        fontFamily: "ABeeZee", fontSize: 40, color: darkRed),
-                  ),
-                  const SizedBox(height: 25),
-                  const Text(
-                    "Timber is dedicated to making the most digestible mobile school application. ",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontFamily: "ABeeZee",
-                      fontSize: 25,
-                      color: textColor,
+                  
+                  Padding(
+                    child: Column(
+                      children: const [
+                        SizedBox(height: 25),
+                        Text(
+                          "If you are interested in joining, please do so! We are using Flutter (dart) as our codebase, and are eager to get some new developers onboard...\n\nEmail\nRangergraff@gmail.com",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontFamily: "ABeeZee",
+                            fontSize: 25,
+                            color: textColor,
+                          ),
+                        ),
+                      ],
                     ),
+                    padding: const EdgeInsets.all(20)
                   ),
+
                 ],
               ),
-              padding: const EdgeInsets.all(20)),
+            ),
           backgroundColor: backgroundColor,
         ),
         Positioned(
@@ -60,7 +111,10 @@ class onboarding6 extends StatelessWidget {
                 alignment: Alignment.bottomCenter,
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, "chat");
+                    Navigator.pushNamed(
+                      context,
+                      "base"
+                    );
                   },
                   child: Row(
                     children: const [

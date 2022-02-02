@@ -16,54 +16,57 @@ class chat extends StatefulWidget {
 }
 
 class _chatState extends State<chat> {
-  int _selectedIndex = 0;
+  final messageController = TextEditingController();
 
-  var page_routes = ["chat", "help"];
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-
-    Navigator.pushNamed(context, page_routes[index]);
+  @override
+  void dispose() {
+    // Clean up the controller when the widget is disposed.
+    messageController.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          "Timber Chat App",
-          style: TextStyle(color: darkRed),
+      resizeToAvoidBottomInset: true,
+      body: Column(children: [
+        Expanded(
+          child: SingleChildScrollView(
+            child: Column(
+              children: const [
+                Text(
+                  "hi",
+                  style: TextStyle(fontSize: 30),
+                ),
+              ],
+            ),
+          ),
         ),
-        centerTitle: true,
-        automaticallyImplyLeading: false,
-        elevation: 0,
-        backgroundColor: backgroundColor,
-      ),
-      backgroundColor: backgroundColor,
-      body: SingleChildScrollView(
-        child: Column(
+        TextField(
+          controller: messageController,
+          decoration:
+              const InputDecoration(label: Text("Type your message here!")),
+        ),
+        /*
+        Row(
           children: [
-            Container(
-                alignment: Alignment.bottomCenter, // align the row
-                padding: const EdgeInsets.all(16.0),
-                child: Row(
-                  children: const <Widget>[Flexible(child: TextField())],
-                ))
+            TextField(
+              controller: messageController,
+              decoration:
+                  const InputDecoration(label: Text("Type your message here!")),
+            ),
+            /*
+            const Icon(
+              Icons.send,
+              size: 50,
+            )
+            */
           ],
-        ),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.chat), label: "Chat"),
-          BottomNavigationBarItem(icon: Icon(Icons.help), label: "Help"),
-        ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: veryDarkRed,
-        onTap: _onItemTapped,
-        backgroundColor: backgroundColor,
-        elevation: 0,
-      ),
+        )*/
+      ]),
+      backgroundColor: Colors.transparent,
     );
   }
 }
+
+

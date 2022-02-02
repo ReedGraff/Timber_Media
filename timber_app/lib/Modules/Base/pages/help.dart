@@ -13,68 +13,32 @@ class help extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Scaffold(
-          body: SingleChildScrollView(
-              child: Column(
-                children: [
-                  Image.asset(
-                    'assets/images/image (1).png',
-                    height: 500,
-                  ),
-                  const SizedBox(height: 25),
-                  const Text(
-                    "Help",
-                    style: TextStyle(
-                        fontFamily: "ABeeZee", fontSize: 40, color: darkRed),
-                  ),
-                  const SizedBox(height: 25),
-                  const Text(
-                    "Timber is dedicated to making the most digestible mobile school application. ",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontFamily: "ABeeZee",
-                      fontSize: 25,
-                      color: textColor,
-                    ),
-                  ),
-                ],
-              ),
-              padding: const EdgeInsets.all(20)),
-          backgroundColor: backgroundColor,
-        ),
-        Positioned(
-          child: Positioned.fill(
-            left: 20,
-            right: 20,
-            bottom: 20,
-            child: Align(
-                alignment: Alignment.bottomCenter,
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, "chat");
-                  },
-                  child: Row(
-                    children: const [
-                      Text(
-                        'Next',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      Icon(
-                        Icons.play_arrow,
-                        color: Colors.white,
-                      ),
-                    ],
-                    mainAxisAlignment: MainAxisAlignment.center,
-                  ),
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all<Color>(lightRed),
-                  ),
-                )),
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          Image.asset(
+            'assets/images/image (1).png',
+            height: 500,
           ),
-        )
-      ],
+          const SizedBox(height: 25),
+          const Text(
+            "Help",
+            style: TextStyle(
+                fontFamily: "ABeeZee", fontSize: 40, color: darkRed),
+          ),
+          const SizedBox(height: 25),
+          const Text(
+            "Timber is dedicated to making the most digestible mobile school application. ",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontFamily: "ABeeZee",
+              fontSize: 25,
+              color: textColor,
+            ),
+          ),
+        ],
+      ),
+      padding: const EdgeInsets.all(20)
     );
   }
 }

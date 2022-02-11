@@ -92,6 +92,7 @@ class _chatState extends State<chat> {
   initState() {
     super.initState();
     // A Timer method that run every 3 seconds
+    sleep(const Duration(seconds: 1));
     Timer.periodic(const Duration(seconds: 5), (timer) {
       firebaseGet();
     });

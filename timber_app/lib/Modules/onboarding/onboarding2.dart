@@ -86,8 +86,7 @@ class onboarding2 extends StatelessWidget {
             ),
           backgroundColor: backgroundColor,
         ),
-        Positioned(
-          child: Positioned.fill(
+        Positioned.fill(
             left: 20,
             right: 20,
             bottom: 20,
@@ -117,7 +116,6 @@ class onboarding2 extends StatelessWidget {
                     backgroundColor: MaterialStateProperty.all<Color>(lightRed),
                   ),
                 )),
-          ),
         )
       ],
     );

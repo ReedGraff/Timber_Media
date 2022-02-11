@@ -45,41 +45,39 @@ class onboarding1 extends StatelessWidget {
           ),
           backgroundColor: backgroundColor,
         ),
-        Positioned(
-          child: Positioned.fill(
-            left: 20,
-            right: 20,
-            bottom: 20,
-            child: Align(
-              alignment: Alignment.bottomCenter,
-              child: ElevatedButton(
-                onPressed: () {
-                  Navigator.pushNamed(
-                    context,
-                    "onboarding2"
-                  );
-                },
-                child: Row(
-                  children: const [
-                    Text(
-                      'Next',
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    Icon(
-                      Icons.play_arrow,
-                      color: Colors.white,
-                    ),
-                  ],
-                  mainAxisAlignment: MainAxisAlignment.center,
-                ),
-                style: ButtonStyle(
-                  backgroundColor:
-                      MaterialStateProperty.all<Color>(lightRed),
-                ),
-              )
-            ),
+        Positioned.fill(
+          left: 20,
+          right: 20,
+          bottom: 20,
+          child: Align(
+            alignment: Alignment.bottomCenter,
+            child: ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(
+                  context,
+                  "onboarding2"
+                );
+              },
+              child: Row(
+                children: const [
+                  Text(
+                    'Next',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  Icon(
+                    Icons.play_arrow,
+                    color: Colors.white,
+                  ),
+                ],
+                mainAxisAlignment: MainAxisAlignment.center,
+              ),
+              style: ButtonStyle(
+                backgroundColor:
+                    MaterialStateProperty.all<Color>(lightRed),
+              ),
+            )
           ),
-        )
+        ),
       ],
     );
   }

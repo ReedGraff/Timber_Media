@@ -1,8 +1,12 @@
 // This Screen is for the chat interface
 
 // Flutter
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'dart:convert' as convert;
+import 'dart:convert';
+import 'dart:async';
+import 'dart:io';
 
 // External
 import 'package:http/http.dart' as http;
@@ -20,8 +24,10 @@ class chat extends StatefulWidget {
 }
 
 class _chatState extends State<chat> {
-  late Future<dynamic> _data;
   TextEditingController messageController = TextEditingController();
+
+  // Streamed data
+  final StreamController<dynamic> _streamController = StreamController();
 
   firebasePost() {
     var url = Uri.parse(
@@ -36,10 +42,9 @@ class _chatState extends State<chat> {
           'date': date,
           'content': messageController.text,
         }));
-    
-    setState(() {
-      _data = firebaseGet();
-    });
+
+    sleep(const Duration(seconds: 1));
+    firebaseGet();
   }
 
   //https://timber-d688b-default-rtdb.firebaseio.com/.json
@@ -59,23 +64,26 @@ class _chatState extends State<chat> {
 
       var data = [];
       for (final item in jsonResponse.keys) {
-        print(item);
+        if (kDebugMode) {
+          print(item);
+        }
         if (item != null) {
           data.add(ChatBar(
               date: jsonResponse[item]['date'] ?? 'date',
               content: jsonResponse[item]['content'] ?? 'content'));
         }
       }
-      return data;
+      _streamController.sink.add(data);
     } else {
       //print("failed with ${response.statusCode}");
-      return const Text("Get better wifi bum");
+      _streamController.sink.add(const Text("Get better wifi bum"));
     }
   }
 
   @override
   void dispose() {
     // Clean up the controller when the widget is disposed.
+    _streamController.close();
     messageController.dispose();
     super.dispose();
   }
@@ -83,7 +91,10 @@ class _chatState extends State<chat> {
   @override
   initState() {
     super.initState();
-    _data = firebaseGet();
+    // A Timer method that run every 3 seconds
+    Timer.periodic(const Duration(seconds: 5), (timer) {
+      firebaseGet();
+    });
   }
 
   @override
@@ -95,30 +106,30 @@ class _chatState extends State<chat> {
             child: Padding(
           child: SingleChildScrollView(
             reverse: true,
-            child: FutureBuilder<dynamic>(
-                future: _data, // a previously-obtained Future<String> or null
-                builder:
-                    (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
-                  if (snapshot.connectionState == ConnectionState.waiting) {
-                    return Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [
-                          ChatBar(date: "", content: "Loading")
-                        ]);
-                  } else if (snapshot.connectionState == ConnectionState.done) {
-                    if (snapshot.hasError) {
-                      return const Text('Error');
-                    } else if (snapshot.hasData) {
-                      List<Widget> dataList = List<Widget>.from(snapshot.data);
+            child: StreamBuilder(
+                stream: _streamController.stream,
+                builder: (context, AsyncSnapshot<dynamic> snapshot) {
+                  switch (snapshot.connectionState) {
+                    case ConnectionState.waiting: return const Center(child: CircularProgressIndicator(),);
+                    default:
+                      if (snapshot.hasError) {
+                        return const Text('Please Wait....');
+                      } else if (snapshot.hasData) {
+                        if (kDebugMode) {
+                          print(snapshot.data);
+                        }
+                        //return const Text("data success");
+                        List<Widget> dataList = List<Widget>.from(snapshot.data);
 
-                      return Column(
+                        return Column(
                           mainAxisAlignment: MainAxisAlignment.center,
-                          children: dataList);
-                    } else {
-                      return const Text('Empty data');
-                    }
-                  } else {
-                    return Text('State: ${snapshot.connectionState}');
+                          children: dataList
+                        );
+                    
+                      } else {
+                        return const Text(
+                            "Nobody has sent a message, be the first one!");
+                      }
                   }
                 }),
           ),

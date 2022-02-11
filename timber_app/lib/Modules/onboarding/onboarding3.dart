@@ -16,74 +16,104 @@ import 'package:flutter/material.dart';
 import 'package:timber_app/Configs/constants/constants.dart';
 import 'package:timber_app/Modules/onboarding/onboarding4.dart';
 
-class onboarding3 extends StatelessWidget {
+class onboarding3 extends StatefulWidget {
   const onboarding3({Key? key}) : super(key: key);
 
   @override
+  _onboarding3State createState() => _onboarding3State();
+}
+
+class _onboarding3State extends State<onboarding3> {
+  
+  late Image image1;
+  late Image image2;
+
+  @override
+  void initState() {
+    super.initState();
+    image1 = Image.asset("assets/images/image (1).jpg");
+  }
+
+  @override
+  void didChangeDependencies() {
+    precacheImage(image1.image, context);
+    super.didChangeDependencies();
+  }
+  
+  
+  @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Scaffold(
-          body: SingleChildScrollView(
-              child: Column(
-                children: [
-                  Image.asset(
-                    'assets/images/image (1).png',
-                    height: 500,
-                  ),
-                  const SizedBox(height: 25),
-                  const Text(
-                    "Welcome 3",
-                    style: TextStyle(
-                        fontFamily: "ABeeZee", fontSize: 40, color: darkRed),
-                  ),
-                  const SizedBox(height: 25),
-                  const Text(
-                    "Timber is dedicated to making the most digestible mobile school application. ",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontFamily: "ABeeZee",
-                      fontSize: 25,
-                      color: textColor,
-                    ),
-                  ),
-                ],
-              ),
-              padding: const EdgeInsets.all(20)),
-          backgroundColor: backgroundColor,
+    return Scaffold(
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: image1.image,
+            fit: BoxFit.cover,
+            colorFilter: ColorFilter.mode(
+              Colors.black.withOpacity(0.2),
+              BlendMode.dstATop
+            ),
+          ),
         ),
-        Positioned.fill(
-          left: 20,
-          right: 20,
-          bottom: 20,
-          child: Align(
-              alignment: Alignment.bottomCenter,
-              child: ElevatedButton(
-                onPressed: () {
-                  Navigator.pushNamed(
-                    context,
-                    "onboarding4"
-                  );
-                },
-                child: Row(
-                  children: const [
-                    Text(
-                      'Next',
-                      style: TextStyle(color: Colors.white),
+        child: Stack(
+          children: [
+            Positioned.fill(
+              left: 20,
+              right: 20,
+              bottom: 20,
+              child: Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Column(children: [
+                    Expanded(
+                      child: Column(
+                        children: const <Widget>[],
+                      ),
                     ),
-                    Icon(
-                      Icons.play_arrow,
-                      color: Colors.white,
+                    const Text(
+                      "Community Wide Chat App",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          fontFamily: "ABeeZee", fontSize: 40, color: darkRed),
                     ),
-                  ],
-                  mainAxisAlignment: MainAxisAlignment.center,
-                ),
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all<Color>(lightRed),
-                ),
-              )),
+                    const SizedBox(height: 25),
+                    const Text(
+                      "Through this app, members within the community may communicate with eachother.",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontFamily: "ABeeZee",
+                        fontSize: 25,
+                        color: textColor,
+                      ),
+                    ),
+                    const SizedBox(height: 25),
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.pushNamed(context, "onboarding4");
+                      },
+                      child: Row(
+                        children: const [
+                          Text(
+                            'Next',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          Icon(
+                            Icons.play_arrow,
+                            color: Colors.white,
+                          ),
+                        ],
+                        mainAxisAlignment: MainAxisAlignment.center,
+                      ),
+                      style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.all<Color>(lightRed),
+                      ),
+                    )
+                  ])),
+            ),
+          ],
         ),
-      ],
+      ),
+      backgroundColor: backgroundColor,
     );
   }
 }

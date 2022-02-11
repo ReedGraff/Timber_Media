@@ -1,13 +1,6 @@
 // This Screen is for the onboarding process interface
 // Flutter
 
-// External
-
-// Local
-
-// This Screen is for the onboarding process interface
-// Flutter
-
 import 'package:flutter/material.dart';
 
 // External
@@ -15,6 +8,7 @@ import 'package:flutter/material.dart';
 // Local
 import 'package:timber_app/Configs/constants/constants.dart';
 import 'package:timber_app/Modules/onboarding/onboarding6.dart';
+import 'package:timber_app/Widgets/textAndIcons.dart';
 
 class onboarding5 extends StatelessWidget {
   const onboarding5({Key? key}) : super(key: key);
@@ -26,31 +20,19 @@ class onboarding5 extends StatelessWidget {
         Scaffold(
           body: SingleChildScrollView(
               child: Column(
-                children: [
-                  Image.asset(
-                    'assets/images/image (1).png',
-                    height: 500,
-                  ),
-                  const SizedBox(height: 25),
-                  const Text(
-                    "Welcome 5",
-                    style: TextStyle(
-                        fontFamily: "ABeeZee", fontSize: 40, color: darkRed),
-                  ),
-                  const SizedBox(height: 25),
-                  const Text(
-                    "Timber is dedicated to making the most digestible mobile school application. ",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontFamily: "ABeeZee",
-                      fontSize: 25,
-                      color: textColor,
-                    ),
-                  ),
+                children: const [
+                  SizedBox(height: 250),
+                  textAndIcons(header: "Further Communication", listOfStrings: ["Authentication", "Class-Based Chats"], Textcolor: darkRed),
+                  SizedBox(height: 50),
+                  textAndIcons(header: "Further Integration", listOfStrings: ["Announcements", "Class Scheduling", "Homework"], Textcolor: Colors.blue),
+                  SizedBox(height: 50),
+                  textAndIcons(header: "Class Visualization", listOfStrings: ["Location", "Time", "Students"], Textcolor: darkRed),
+                  SizedBox(height: 50),
+                  textAndIcons(header: "Extracurricular Activities", listOfStrings: ["Clubs", "Alumni", "Internships", "Athletics"], Textcolor: Colors.blue),
                 ],
               ),
               padding: const EdgeInsets.all(20)),
-          backgroundColor: backgroundColor,
+          backgroundColor: lightRed,
         ),
         Positioned.fill(
           left: 20,
@@ -69,17 +51,17 @@ class onboarding5 extends StatelessWidget {
                   children: const [
                     Text(
                       'Next',
-                      style: TextStyle(color: Colors.white),
+                      style: TextStyle(color: lightRed),
                     ),
                     Icon(
                       Icons.play_arrow,
-                      color: Colors.white,
+                      color: lightRed,
                     ),
                   ],
                   mainAxisAlignment: MainAxisAlignment.center,
                 ),
                 style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all<Color>(lightRed),
+                  backgroundColor: MaterialStateProperty.all<Color>(textColor),
                 ),
               )),
         ),

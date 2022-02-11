@@ -35,7 +35,6 @@ class _splashState extends State<splash> {
       Future.delayed(const Duration(seconds: 3),
           () => Navigator.pushNamed(context, "base"));
     } else {
-      prefs.setInt("timesLogged", 1);
       Future.delayed(const Duration(seconds: 3),
           () => Navigator.pushNamed(context, "onboarding1"));
     }

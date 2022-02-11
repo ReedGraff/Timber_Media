@@ -4,6 +4,7 @@
 import 'package:flutter/material.dart';
 
 // External
+import 'package:shared_preferences/shared_preferences.dart';
 
 // Local
 import 'package:timber_app/Configs/constants/constants.dart';
@@ -17,69 +18,66 @@ class onboarding6 extends StatelessWidget {
   var height = screenSize.height;
   */
 
+  logs() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setInt("timesLogged", 1);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
         Scaffold(
           body: SingleChildScrollView(
-              child: Column(
-                children: [
-
-                  Stack(
-                    children: [
-                      Container(
-                        width: MediaQuery.of(context).size.width,
-                        height: 400,
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: const AssetImage("assets/images/image (2).jpg"),
-                            fit: BoxFit.cover,
-                            colorFilter: ColorFilter.mode(
-                              Colors.black.withOpacity(0.2), 
-                              BlendMode.dstATop
-                            ),
-                          ),
-                          borderRadius: const BorderRadius.only(
+            child: Column(
+              children: [
+                Stack(children: [
+                  Container(
+                    width: MediaQuery.of(context).size.width,
+                    height: 400,
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image:
+                              const AssetImage("assets/images/image (2).jpg"),
+                          fit: BoxFit.cover,
+                          colorFilter: ColorFilter.mode(
+                              Colors.black.withOpacity(0.2), BlendMode.dstATop),
+                        ),
+                        borderRadius: const BorderRadius.only(
                             bottomLeft: Radius.circular(30),
-                            bottomRight: Radius.circular(30)
-                          )
-                        ),
-                      ),
-                      Padding(
-                        child: Center(
-                          child: Column(
-                            children: const [
-                              SizedBox(height: 150),
-                              Text(
-                                "Reccomendations",
-                                style: TextStyle(
-                                  fontFamily: "ABeeZee", 
-                                  fontSize: 40, 
-                                  color: textColor,
-                                ),
-                                textAlign: TextAlign.center,
-                              ),
-                              SizedBox(height: 25),
-                              Text(
-                                "If there is ever a point in which you discover a bug or issue please feel free to reach out to us!",
-                                style: TextStyle(
-                                  fontFamily: "ABeeZee", 
-                                  fontSize: 25, 
-                                  color: textColor,
-                                ),
-                                textAlign: TextAlign.center,
-                              ),
-                            ],
-                          ),
-                        ),
-                        padding: const EdgeInsets.all(20),
-                      )
-
-                    ]
+                            bottomRight: Radius.circular(30))),
                   ),
-                  
                   Padding(
+                    child: Center(
+                      child: Column(
+                        children: const [
+                          SizedBox(height: 150),
+                          Text(
+                            "Reccomendations",
+                            style: TextStyle(
+                              fontFamily: "ABeeZee",
+                              fontSize: 40,
+                              color: textColor,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                          SizedBox(height: 25),
+                          Text(
+                            "If there is ever a point in which you discover a bug or issue please feel free to reach out to us!",
+                            style: TextStyle(
+                              fontFamily: "ABeeZee",
+                              fontSize: 25,
+                              color: textColor,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                        ],
+                      ),
+                    ),
+                    padding: const EdgeInsets.all(20),
+                  )
+                ]),
+                Padding(
                     child: Column(
                       children: const [
                         SizedBox(height: 25),
@@ -94,12 +92,10 @@ class onboarding6 extends StatelessWidget {
                         ),
                       ],
                     ),
-                    padding: const EdgeInsets.all(20)
-                  ),
-
-                ],
-              ),
+                    padding: const EdgeInsets.all(20)),
+              ],
             ),
+          ),
           backgroundColor: backgroundColor,
         ),
         Positioned.fill(
@@ -110,10 +106,8 @@ class onboarding6 extends StatelessWidget {
               alignment: Alignment.bottomCenter,
               child: ElevatedButton(
                 onPressed: () {
-                  Navigator.pushNamed(
-                    context,
-                    "base"
-                  );
+                  logs();
+                  Navigator.pushNamed(context, "base");
                 },
                 child: Row(
                   children: const [

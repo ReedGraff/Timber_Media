@@ -36,6 +36,47 @@ class help extends StatelessWidget {
               color: textColor,
             ),
           ),
+          const SizedBox(height: 25),
+          const Text(
+            "If you are interested in joining our development team please let us know here: Rangergraff@gmail.com!",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontFamily: "ABeeZee",
+              fontSize: 25,
+              color: textColor,
+            ),
+          ),
+          const SizedBox(height: 25),
+          const Text(
+            "Currently we are using Flutter(Dart) as our primary codebase, and all of our code is currently opensourced as seen here: https://github.com/ReedGraff/Timber_Media",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontFamily: "ABeeZee",
+              fontSize: 25,
+              color: textColor,
+            ),
+          ),
+          const SizedBox(height: 25),
+          const Text(
+            "For those of you in the CS club, you are legally obligated to aid in the development of this application according to your omnipotent dictator.",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontFamily: "ABeeZee",
+              fontSize: 25,
+              color: textColor,
+            ),
+          ),
+          const SizedBox(height: 25),
+          const Text(
+            "If you are from Woodberry, we as a team are hoping to develop an application or set of scripts to cut out Visualizer, Canvas, Reach, and implemet a new UI/UX for alumni connections and afternoon activities.",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontFamily: "ABeeZee",
+              fontSize: 25,
+              color: textColor,
+            ),
+          ),
+          const SizedBox(height: 25),
         ],
       ),
       padding: const EdgeInsets.all(20)

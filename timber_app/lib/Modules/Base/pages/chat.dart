@@ -54,29 +54,38 @@ class _chatState extends State<chat> {
         "https://timber-d688b-default-rtdb.firebaseio.com/messages.json");
 
     // Await the http get response, then decode the json-formatted response.
-    var response = await http.get(url);
-    if (response.statusCode == 200) {
-      var jsonResponse = convert.jsonDecode(response.body);
+    try {
+      var response = await http.get(url);
+      if (response.statusCode == 200) {
+        var jsonResponse = convert.jsonDecode(response.body);
 
-      // Delete all null values
-      //print(jsonResponse);
-      //jsonResponse.removeWhere((key, value) => key == null || value == null);
+        // Delete all null values
+        //print(jsonResponse);
+        //jsonResponse.removeWhere((key, value) => key == null || value == null);
 
-      var data = [];
-      for (final item in jsonResponse.keys) {
-        if (kDebugMode) {
-          print(item);
+        var data = [];
+        for (final item in jsonResponse.keys) {
+          if (kDebugMode) {
+            print(item);
+          }
+          if (item != null) {
+            data.add(ChatBar(
+                date: jsonResponse[item]['date'] ?? 'date',
+                content: jsonResponse[item]['content'] ?? 'content'));
+          }
         }
-        if (item != null) {
-          data.add(ChatBar(
-              date: jsonResponse[item]['date'] ?? 'date',
-              content: jsonResponse[item]['content'] ?? 'content'));
+        if (!_streamController.isClosed) {
+          _streamController.sink.add(data);
         }
+      } else {
+        //print("failed with ${response.statusCode}");
+        _streamController.sink.add(const Text("Get better wifi bum"));
       }
-      _streamController.sink.add(data);
-    } else {
-      //print("failed with ${response.statusCode}");
-      _streamController.sink.add(const Text("Get better wifi bum"));
+      
+    } catch (e) {
+      if (kDebugMode) {
+        print(e);
+      }
     }
   }
 
@@ -93,7 +102,7 @@ class _chatState extends State<chat> {
     super.initState();
     // A Timer method that run every 3 seconds
     sleep(const Duration(seconds: 1));
-    Timer.periodic(const Duration(seconds: 5), (timer) {
+    Timer.periodic(const Duration(seconds: 10), (timer) {
       firebaseGet();
     });
   }

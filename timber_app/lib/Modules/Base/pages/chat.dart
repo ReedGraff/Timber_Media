@@ -43,7 +43,6 @@ class _chatState extends State<chat> {
           'content': messageController.text,
         }));
 
-    sleep(const Duration(seconds: 1));
     firebaseGet();
   }
 
@@ -101,7 +100,6 @@ class _chatState extends State<chat> {
   initState() {
     super.initState();
     // A Timer method that run every 3 seconds
-    sleep(const Duration(seconds: 1));
     Timer.periodic(const Duration(seconds: 10), (timer) {
       firebaseGet();
     });

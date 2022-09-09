@@ -27,7 +27,7 @@ class _splashState extends State<splash> {
 
   logs() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    //prefs.clear();
+    prefs.clear();
 
     if (prefs.containsKey("timesLogged")) {
       var timesLogged = prefs.getInt("timesLogged");
